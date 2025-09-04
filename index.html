@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artisaned - Expert Help, Reimagined</title>
+    <meta name="description" content="AI-powered expert assistance that scales from self-help to professional support. Starting with automotive solutions.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Motion.dev -->
+    <script type="module">
+        import { animate, scroll, stagger, inView } from "https://cdn.jsdelivr.net/npm/motion@11.11.13/+esm"
+        window.Motion = { animate, scroll, stagger, inView };
+    </script>
+    
+    <style>
+        :root {
+            --primary-blue: #35A7FF;
+            --tufts-blue: #3C91E6;
+            --prussian-blue: #003459;
+            --linen: #EFE6DD;
+            --rosy-brown: #D89F92;
+            --jasper: #C05746;
+            --white: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-light: #6b7280;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .smoke-layer {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 70%, rgba(53, 167, 255, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 30%, rgba(60, 145, 230, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 20% 20%, rgba(0, 52, 89, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(208, 159, 146, 0.08) 0%, transparent 50%);
+            animation: smokeFloat 20s ease-in-out infinite;
+        }
+
+        .smoke-layer:nth-child(2) {
+            animation: smokeFloat 25s ease-in-out infinite reverse;
+            animation-delay: -5s;
+        }
+
+        .smoke-layer:nth-child(3) {
+            animation: smokeFloat 30s ease-in-out infinite;
+            animation-delay: -10s;
+        }
+
+        @keyframes smokeFloat {
+            0%, 100% {
+                transform: translate(-10%, -10%) rotate(0deg) scale(1);
+            }
+            25% {
+                transform: translate(-5%, -15%) rotate(1deg) scale(1.05);
+            }
+            50% {
+                transform: translate(-15%, -5%) rotate(-1deg) scale(0.95);
+            }
+            75% {
+                transform: translate(-8%, -12%) rotate(0.5deg) scale(1.02);
+            }
+        }
+
+        /* Header Logo */
+        .header-logo {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            overflow: visible;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .main-logo {
+            height: 80px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .main-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .dev-status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--linen) 0%, #f8f9fa 100%);
+            position: relative;
+            padding: 80px 0 0;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--prussian-blue) 0%, var(--primary-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .cta-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .cta-primary {
+            background: var(--jasper);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            max-width: 200px;
+        }
+
+        .cta-primary:hover {
+            background: #a64937;
+            transform: translateY(-2px);
+        }
+
+        .cta-secondary {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta-secondary:hover {
+            color: var(--tufts-blue);
+            transform: translateX(5px);
+        }
+
+        /* Hero Visualization - Desktop */
+        .hero-visual {
+            position: relative;
+            height: 600px;
+            width: 100%;
+        }
+
+        .service-tier {
+            position: absolute;
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            width: 280px;
+        }
+
+        .service-tier:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .tier-1 {
+            top: 0;
+            left: 0;
+            background: linear-gradient(135deg, var(--primary-blue), #4ab8ff);
+            color: white;
+            z-index: 3;
+        }
+
+        .tier-2 {
+            top: 180px;
+            right: 0;
+            background: linear-gradient(135deg, var(--tufts-blue), #5ba3f0);
+            color: white;
+            z-index: 2;
+        }
+
+        .tier-3 {
+            bottom: 0;
+            left: 100px;
+            background: linear-gradient(135deg, var(--prussian-blue), #2c5a7a);
+            color: white;
+            z-index: 1;
+        }
+
+        .tier-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tier-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .tier-desc {
+            font-size: 1rem;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 6rem 0;
+            background: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .how-it-works-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--prussian-blue);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section-logo-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .section-watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: auto;
+            opacity: 0.03;
+            z-index: 0;
+        }
+
+        .section-logo {
+            height: 120px;
+            width: auto;
+            margin-bottom: 1.5rem;
+            filter: contrast(1.2);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .process-step::after {
+            content: '';
+            position: absolute;
+            top: 50px;
+            right: -1.5rem;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-blue), transparent);
+        }
+
+        .process-step:last-child::after {
+            display: none;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--tufts-blue));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--prussian-blue);
+            margin-bottom: 1rem;
+        }
+
+        .step-desc {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, var(--linen) 100%);
+            position: relative;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--tufts-blue));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .feature-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--prussian-blue);
+            margin-bottom: 1rem;
+        }
+
+        .feature-desc {
+            color: var(--text-light);
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+
+        /* Coming Soon Section */
+        .coming-soon {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--prussian-blue) 0%, var(--primary-blue) 100%);
+            color: white;
+            position: relative;
+        }
+
+        .coming-soon-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .coming-soon h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .coming-soon p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .roadmap-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .roadmap-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .roadmap-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .roadmap-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .roadmap-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .roadmap-desc {
+            font-size: 1rem;
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        .footer-simple {
+            background: var(--prussian-blue);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-logo {
+            height: 80px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        /* Mobile Responsive Design */
+        @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-visual {
+                height: 500px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 1.5rem;
+            }
+
+            .service-tier {
+                position: relative !important;
+                top: auto !important;
+                left: auto !important;
+                right: auto !important;
+                bottom: auto !important;
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .header-container {
+                padding: 0 1rem;
+            }
+
+            .main-logo {
+                height: 60px;
+            }
+
+            .section-logo {
+                height: 80px;
+            }
+
+            .footer-logo {
+                height: 60px;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .process-step::after {
+                display: none;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .coming-soon h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Logo -->
+    <header class="header-logo">
+        <div class="header-container">
+            <img src="assets/logotextdefault.png" alt="Artisaned" class="main-logo">
+            <div class="dev-status">
+                <div class="status-dot"></div>
+                In Development
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="animated-bg">
+            <div class="smoke-layer"></div>
+            <div class="smoke-layer"></div>
+            <div class="smoke-layer"></div>
+        </div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="fade-in">Expert Help, Reimagined</h1>
+                <p class="subtitle fade-in">AI-powered assistance that scales from instant self-help to professional on-site support. Starting with automotive solutions for mechanics and DIY enthusiasts.</p>
+                
+                <div class="hero-stats fade-in">
+                    <div class="stat">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">Service Tiers</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">AI Assistance</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Vetted Experts</span>
+                    </div>
+                </div>
+
+                <div class="cta-section fade-in">
+                    <a href="#contact" class="cta-primary">Get in Touch</a>
+                    <button onclick="document.querySelector('#how-it-works').scrollIntoView({behavior: 'smooth'})" class="cta-secondary">
+                        Learn More →
+                    </button>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="service-tier tier-1 scale-in">
+                    <div class="tier-icon">🤖</div>
+                    <div class="tier-title">AI Self-Help</div>
+                    <div class="tier-desc">Instant troubleshooting with AR overlays and step-by-step guidance</div>
+                </div>
+                <div class="service-tier tier-2 scale-in">
+                    <div class="tier-icon">👨‍🔧</div>
+                    <div class="tier-title">Remote Expert</div>
+                    <div class="tier-desc">Live video calls with vetted professionals for complex issues</div>
+                </div>
+                <div class="service-tier tier-3 scale-in">
+                    <div class="tier-icon">🏠</div>
+                    <div class="tier-title">On-Site Service</div>
+                    <div class="tier-desc">Verified local contractors for hands-on work</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="section-logo-bg">
+            <img src="assets/logo.svg" alt="" class="section-watermark">
+        </div>
+        <div class="how-it-works-container">
+            <div class="section-header">
+                <img src="assets/logoontoptext.png" alt="Artisaned - How It Works" class="section-logo">
+                <h2 class="fade-in">How Artisaned Works</h2>
+                <p class="fade-in">Our intelligent escalation system ensures you get the right level of help at the right time, saving you money and frustration.</p>
+            </div>
+
+            <div class="process-steps">
+                <div class="process-step slide-in-left">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Start with AI</h3>
+                    <p class="step-desc">Upload a photo or describe your problem. Our AI instantly analyzes and provides step-by-step guidance with AR overlays.</p>
+                </div>
+
+                <div class="process-step slide-in-left">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Expert Escalation</h3>
+                    <p class="step-desc">If AI can't solve it, instantly connect with a certified mechanic via video call. They see what you see through shared AR.</p>
+                </div>
+
+                <div class="process-step slide-in-left">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">On-Site Solution</h3>
+                    <p class="step-desc">Need hands-on help? We'll connect you with vetted local contractors who understand your exact situation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="features-container">
+            <div class="section-header">
+                <h2 class="fade-in">Built for the Modern Age</h2>
+                <p class="fade-in">Combining cutting-edge AI with human expertise to deliver solutions that actually work.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card slide-in-left">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">Instant Response</h3>
+                    <p class="feature-desc">AI-powered initial diagnosis in seconds, not hours. Get immediate guidance for common automotive issues with visual overlays.</p>
+                </div>
+
+                <div class="feature-card slide-in-left">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">Smart Escalation</h3>
+                    <p class="feature-desc">Seamlessly connect with human experts when AI reaches its limits. No starting over, no lost context, no wasted time.</p>
+                </div>
+
+                <div class="feature-card slide-in-left">
+                    <div class="feature-icon">🔒</div>
+                    <h3 class="feature-title">Trusted Network</h3>
+                    <p class="feature-desc">Every expert and contractor is thoroughly vetted, certified, and rated by our community. Quality guaranteed.</p>
+                </div>
+
+                <div class="feature-card slide-in-left">
+                    <div class="feature-icon">📱</div>
+                    <h3 class="feature-title">AR-Powered Guidance</h3>
+                    <p class="feature-desc">See exactly what to do with augmented reality overlays that highlight parts, show procedures, and guide your hands.</p>
+                </div>
+
+                <div class="feature-card slide-in-left">
+                    <div class="feature-icon">💡</div>
+                    <h3 class="feature-title">Learn While You Fix</h3>
+                    <p class="feature-desc">Build your skills with explanations that help you understand not just what to do, but why you're doing it.</p>
+                </div>
+
+                <div class="feature-card slide-in-left">
+                    <div class="feature-icon">💰</div>
+                    <h3 class="feature-title">Cost-Effective Solutions</h3>
+                    <p class="feature-desc">Start with free AI help, escalate only when needed. Save money by solving simple problems yourself.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section class="coming-soon" id="roadmap">
+        <div class="coming-soon-container">
+            <h2 class="fade-in">The Future of Expert Services</h2>
+            <p class="fade-in">We're starting with automotive diagnostics, but this is just the beginning. Our platform will expand to revolutionize how you get expert help across every aspect of life.</p>
+
+            <div class="roadmap-preview">
+                <div class="roadmap-item slide-in-right">
+                    <div class="roadmap-icon">🚗</div>
+                    <h3 class="roadmap-title">Automotive First</h3>
+                    <p class="roadmap-desc">Remote diagnostics for check engine lights, maintenance guidance, and repair assistance with AR.</p>
+                </div>
+
+                <div class="roadmap-item slide-in-right">
+                    <div class="roadmap-icon">🏡</div>
+                    <h3 class="roadmap-title">Home Services</h3>
+                    <p class="roadmap-desc">Plumbing, electrical, HVAC, and general maintenance with AR-guided solutions and expert support.</p>
+                </div>
+
+                <div class="roadmap-item slide-in-right">
+                    <div class="roadmap-icon">💻</div>
+                    <h3 class="roadmap-title">Tech Support</h3>
+                    <p class="roadmap-desc">IT troubleshooting, software help, and device setup with visual assistance and screen sharing.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact" style="padding: 4rem 0; background: white; text-align: center; position: relative;">
+        <div class="section-logo-bg">
+            <img src="assets/logo.svg" alt="" class="section-watermark">
+        </div>
+        <div style="max-width: 800px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1;">
+            <h2 style="font-size: 2.5rem; font-weight: 700; color: var(--prussian-blue); margin-bottom: 1rem;">Get in Touch</h2>
+            <p style="font-size: 1.1rem; color: var(--text-light); margin-bottom: 2rem;">Interested in being part of the future of expert services? Whether you're a potential user, expert, or partner, we'd love to hear from you.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="mailto:hello@artisaned.app" style="background: var(--primary-blue); color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600;">Email Us</a>
+                <a href="tel:+1234567890" style="background: transparent; color: var(--primary-blue); padding: 1rem 2rem; border: 2px solid var(--primary-blue); border-radius: 8px; text-decoration: none; font-weight: 600;">Call Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Logo -->
+    <footer class="footer-simple">
+        <div class="footer-container">
+            <img src="assets/logowhite.png" alt="Artisaned" class="footer-logo">
+            <p>© 2025 Artisaned. Expert help, reimagined.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize animations when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            const { animate, stagger, inView } = window.Motion;
+
+            // Hero animations
+            animate(".fade-in", 
+                { opacity: [0, 1], y: [30, 0] }, 
+                { delay: stagger(0.2), duration: 0.8, ease: "easeOut" }
+            );
+
+            animate(".scale-in", 
+                { opacity: [0, 1], scale: [0.8, 1] }, 
+                { delay: stagger(0.3, { start: 0.5 }), duration: 0.6, ease: "backOut" }
+            );
+
+            // Service tiers floating animation (desktop only)
+            if (window.innerWidth > 768) {
+                animate(".tier-1", 
+                    { y: [-15, 15] }, 
+                    { duration: 4, repeat: Infinity, direction: "alternate", ease: "easeInOut" }
+                );
+
+                animate(".tier-2", 
+                    { y: [15, -15] }, 
+                    { duration: 5, repeat: Infinity, direction: "alternate", ease: "easeInOut" }
+                );
+
+                animate(".tier-3", 
+                    { y: [-10, 20] }, 
+                    { duration: 4.5, repeat: Infinity, direction: "alternate", ease: "easeInOut" }
+                );
+            }
+
+            // Scroll-triggered animations
+            inView(".section-header", ({ target }) => {
+                animate(target.querySelectorAll("h2, p"), 
+                    { opacity: [0, 1], y: [50, 0] }, 
+                    { delay: stagger(0.2), duration: 0.8 }
+                );
+            });
+
+            inView(".process-step", ({ target }) => {
+                animate(target, 
+                    { opacity: [0, 1], x: [-50, 0] }, 
+                    { duration: 0.6, ease: "easeOut" }
+                );
+            });
+
+            inView(".feature-card", ({ target }) => {
+                animate(target, 
+                    { opacity: [0, 1], y: [30, 0] }, 
+                    { duration: 0.6, ease: "easeOut" }
+                );
+            });
+
+            inView(".roadmap-item", ({ target }) => {
+                animate(target, 
+                    { opacity: [0, 1], x: [50, 0] }, 
+                    { duration: 0.6, ease: "easeOut" }
+                );
+            });
+
+            // Interactive hover effects
+            document.querySelectorAll('.feature-card, .roadmap-item').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    animate(card, { y: -8 }, { duration: 0.3 });
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    animate(card, { y: 0 }, { duration: 0.3 });
+                });
+            });
+
+            // CTA button animations
+            document.querySelectorAll('.cta-primary').forEach(button => {
+                button.addEventListener('mouseenter', () => {
+                    animate(button, { scale: 1.05, y: -2 }, { duration: 0.2 });
+                });
+                
+                button.addEventListener('mouseleave', () => {
+                    animate(button, { scale: 1, y: 0 }, { duration: 0.2 });
+                });
+            });
+
+            // Stats animation
+            inView(".hero-stats", ({ target }) => {
+                const statNumbers = target.querySelectorAll('.stat-number');
+                statNumbers.forEach((stat, index) => {
+                    const finalValue = stat.textContent;
+                    let current = 0;
+                    const increment = finalValue === '100%' ? 5 : finalValue === '24/7' ? 1 : 1;
+                    const isPercentage = finalValue.includes('%');
+                    const isTime = finalValue.includes('/');
+                    
+                    if (!isTime) {
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (isPercentage && current >= 100) {
+                                stat.textContent = '100%';
+                                clearInterval(timer);
+                            } else if (!isPercentage && current >= parseInt(finalValue)) {
+                                stat.textContent = finalValue;
+                                clearInterval(timer);
+                            } else {
+                                stat.textContent = isPercentage ? current + '%' : current;
+                            }
+                        }, 50);
+                    }
+                });
+            });
+
+            // Logo hover animations
+            document.querySelectorAll('.main-logo, .section-logo').forEach(logo => {
+                logo.addEventListener('mouseenter', () => {
+                    animate(logo, { scale: 1.1, rotate: 5 }, { duration: 0.3 });
+                });
+                
+                logo.addEventListener('mouseleave', () => {
+                    animate(logo, { scale: 1, rotate: 0 }, { duration: 0.3 });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
